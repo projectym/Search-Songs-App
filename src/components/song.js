@@ -5,13 +5,16 @@ import React from 'react'
 // url is just end of url. must add "projectym.net/songs/"
 // using spread operator to access props directly
 
-const Song = ({ ...props }) => {
+const Song = (props) => {
+    console.log(props);
+    const { name, leader, songKey, url } = props;
+    const urlFull = "https://projectym.net/songs/" + url
     return (
         <div className='container'>
-            <h3>Song Name</h3>
-            <p>song leader</p>
-            <p>song key</p>
-            <a href="https://projectym.net/songs/">Link</a>
+            <h3>{name}</h3>
+            <p>{leader}</p>
+            <p>{songKey}</p>
+            <a href={urlFull}>Link</a>
         </div>
     )
 }
