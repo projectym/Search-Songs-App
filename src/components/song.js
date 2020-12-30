@@ -5,15 +5,15 @@ import React from 'react'
 // url is just end of url. must add "projectym.net/songs/"
 // using spread operator to access props directly
 
-const song = ({ ...props }) => {
+const Song = ({ ...props }) => {
     return (
         <div className='container'>
             <h3>Song Name</h3>
             <p>song leader</p>
             <p>song key</p>
-            <a href="https://projectym.net/songs/"></a>
+            <a href="https://projectym.net/songs/">Link</a>
         </div>
     )
 }
 
-export default song
+export default Song
