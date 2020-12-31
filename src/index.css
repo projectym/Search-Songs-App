@@ -1,3 +1,20 @@
 body{
     background-color: #eee;
 }
+
+.App{
+    padding: .3em
+}
+
+.top-div{
+    padding: 0 .1em;
+}
+
+.bottom-div{
+    background-color: #ddd;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 400px);
+    grid-column-gap: 10px;
+    justify-content: space-evenly;
+}

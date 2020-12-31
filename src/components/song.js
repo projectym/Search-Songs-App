@@ -6,15 +6,13 @@ import React from 'react'
 // using spread operator to access props directly
 
 const Song = (props) => {
-    console.log(props);
+    //console.log(props);
     const { name, leader, songKey, url } = props;
     const urlFull = "https://projectym.net/songs/" + url
     return (
-        <div className='container'>
-            <h3>{name}</h3>
-            <p>{leader}</p>
-            <p>{songKey}</p>
-            <a href={urlFull}>Link</a>
+        <div className='card'>
+            <h5>{name}</h5>
+            <p>Lead: {leader}  | Key: {songKey} |  <a href={urlFull}>Lyrics</a></p>
         </div>
     )
 }

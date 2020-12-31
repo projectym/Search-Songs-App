@@ -12,22 +12,33 @@ const App = () => {
       .then(response => response.json())
       .then(json => {
         const newSongs = json.Songs;
-        console.log(newSongs);
+        //console.log(newSongs);
         setSongs(newSongs);
       })
   }, []);
 
+
   return (
+
+
     <div className="App">
-      <h1>Search Songs</h1>
-      <p>A react app to search through songs using redux and custom api deployed by GitHub.</p>
-      {songs.map(song => {
-        return (
-          <Song key={song.id} name={song.name} leader={song.leader} songKey={song.key} url={song.url} />
-        )
-      })}
+
+      <div className="top-div">
+        <h1>Search Songs</h1>
+        <p>A react app to search through songs using redux and custom api deployed by GitHub.</p>
+      </div>
+
+      <div className="bottom-div">
+        {songs.map(song => {
+          return (
+            <Song key={song.id} name={song.name} leader={song.lead} songKey={song.key} url={song.url} />
+          )
+        })}
+      </div>
+
     </div>
   );
 }
+
 
 export default App;
