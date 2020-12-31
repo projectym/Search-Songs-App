@@ -12,7 +12,7 @@ const Song = (props) => {
     return (
         <div className='card'>
             <h5>{name}</h5>
-            <p>Lead: {leader}  | Key: {songKey} |  <a href={urlFull}>Lyrics</a></p>
+            <p>{leader ? `Lead: ${leader} | ` : ""} Key: {songKey} |  <a href={urlFull}>Lyrics</a></p>
         </div>
     )
 }
