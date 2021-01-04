@@ -15,22 +15,33 @@ const App = () => {
 
   const [filterKey, setFilterKey] = useState('');
   const [filterLead, setFilterLead] = useState('');
-  const [sortBy, setSortBy] = useState('');
+  const [sortBy, setSortBy] = useState('name');
+  const [ascDesc, setAscDesc] = useState('asc')
 
-  const sortResults = () => {
+  const sortResults = (sortSongsBy, ascDesc) => {
 
     // Find what to sort by
     // set string to uppercase
     // compare strings and return value
 
     songResults.sort((song1, song2) => {
+
+      let value1 = 1
+      let value2 = -1
+
+      if (ascDesc === 'desc') {
+        value1 = -1;
+        value2 = 1
+      }
+
+
       let var1 = '';
       let var2 = '';
 
-      if (sortBy === 'key') {
+      if (sortSongsBy === 'key') {
         var1 = song1.key.toUpperCase();
         var2 = song2.key.toUpperCase();
-      } else if (sortBy === 'date') {
+      } else if (sortSongsBy === 'date') {
         var1 = song1.last_date_sung.toUpperCase();
         var2 = song2.last_date_sung.toUpperCase();
       } else {
@@ -39,10 +50,10 @@ const App = () => {
       }
 
       if (var1 < var2) {
-        return -1
+        return value2
       }
       if (var1 > var2) {
-        return 1
+        return value1
       }
 
       return 0
@@ -86,7 +97,7 @@ const App = () => {
 
       <div className="settings-div">
         <Filter keys={keys} setFilterKey={setFilterKey} setFilterLead={setFilterLead} />
-        <Sort setSortBy={setSortBy} />
+        <Sort setSortBy={setSortBy} setAscDesc={setAscDesc} />
 
       </div>
 
@@ -97,10 +108,11 @@ const App = () => {
         </div>
 
         <div className="bottom-div">
-          {sortResults()}{
+          {sortResults('name', ascDesc)}
+          {sortBy === 'name' ? null : sortResults(sortBy, ascDesc)}{
             songResults.map(song => {
               return (
-                <Song key={song.id} name={song.name} leader={song.lead} songKey={song.key} url={song.url} />
+                <Song song={song} key={song.id} />
               )
             })}
         </div>

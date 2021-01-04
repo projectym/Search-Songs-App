@@ -7,12 +7,14 @@ import React from 'react'
 
 const Song = (props) => {
     //console.log(props);
-    const { name, leader, songKey, url } = props;
+    const { name, lead, key, url, last_date_sung } = props.song;
     const urlFull = "https://projectym.net/songs/" + url
+    const date = last_date_sung ? new Date(last_date_sung).toDateString().slice(3) : '';
     return (
         <div className='card'>
             <h5>{name}</h5>
-            <p>{leader ? `Lead: ${leader} | ` : ""} Key: {songKey} |  <a href={urlFull}>Lyrics</a></p>
+            <p className='center'>Last Sung: {date}</p>
+            <p>{lead ? `Lead: ${lead} | ` : ""} Key: {key} |  <a href={urlFull}>Lyrics</a></p>
         </div>
     )
 }

@@ -34,3 +34,30 @@ body{
     width: 15%;
     padding: 15px;
 }
+
+.settings-div > * > * {
+    margin-bottom: 5px;
+}
+
+.radio-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.width-30{
+        width: max(30%,50px);
+}
+
+.asc-desc{
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid black;
+}
