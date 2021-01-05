@@ -39,7 +39,7 @@ body{
 }
 
 /* -------- Settingvtext for inputs so mobile doesn't zoom  -------*/
-input, select:focus {
+input, select, select:focus {
     font-size: 16px;
 }
 
