@@ -14,3 +14,15 @@ label {
     font-size: 1rem;
     color: #333;
 }
+
+button{
+     border-radius: 15px;
+     background-color: #fff;
+     height: 32px;
+     margin: 0 6px;
+ }
+
+button:focus {
+    outline: none;
+    background-color: #fff;
+}

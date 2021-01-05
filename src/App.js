@@ -5,6 +5,7 @@ import './App.css';
 import Song from './components/Song'
 import Filter from './components/Filter'
 import Sort from './components/Sort'
+import Search from './components/Search'
 
 
 const App = () => {
@@ -17,6 +18,9 @@ const App = () => {
   const [filterLead, setFilterLead] = useState('');
   const [sortBy, setSortBy] = useState('name');
   const [ascDesc, setAscDesc] = useState('asc')
+  const [searchVal, setSearchVal] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const [showSettings, setShowSettings] = useState(true);
 
   const sortResults = (sortSongsBy, ascDesc) => {
 
@@ -60,6 +64,18 @@ const App = () => {
     })
   }
 
+  const checkSize = () => {
+    const width = window.innerWidth
+    if (width > 1000 && isMobile) {
+      setIsMobile(false);
+      setShowSettings(true);
+    }
+    else if (width <= 1000 && !isMobile) {
+      setIsMobile(true);
+      setShowSettings(false);
+    }
+  }
+
   useEffect(() => {
     fetch('https://my-json-server.typicode.com/projectym/Songs-Api/db')
       .then(response => response.json())
@@ -85,19 +101,59 @@ const App = () => {
       return true
     });
 
+    if (searchVal !== '') {
+
+      const searchArr = searchVal.toUpperCase().split(' ');
+      const index = searchArr.indexOf('');
+
+      if (index > -1) {
+        searchArr.splice(index, 1);
+      }
+
+      for (let i = 0; i < searchArr.length; i++) {
+
+        if (filteredSongs.length > 0) {
+          filteredSongs = filteredSongs.filter(song => {
+
+            const { name, lead, key } = song;
+
+            if (name.toUpperCase().includes(searchArr[i])) {
+              return true
+            }
+            else if (lead.toUpperCase().includes(searchArr[i])) {
+              return true
+            }
+            else if (key.toUpperCase().includes(searchArr[i])) {
+              return true
+            }
+            return false;
+          })
+        }
+      }
+    }
 
     setSongResults(filteredSongs);
-  }, [filterKey, filterLead, songs])
 
+  }, [filterKey, filterLead, songs, searchVal])
 
+  useEffect(() => {
+    checkSize()
+    window.addEventListener('resize', checkSize)
+    return () => {
+      window.removeEventListener('resize', checkSize)
+    }
+  })
 
   return (
 
     <div className="App">
 
-      <div className="settings-div">
-        <Filter keys={keys} setFilterKey={setFilterKey} setFilterLead={setFilterLead} />
-        <Sort setSortBy={setSortBy} setAscDesc={setAscDesc} />
+      <div className={isMobile ? "settings-container-mobile" : "settings-container"} hidden={!showSettings}>
+        <div className="settings-div">
+          <Filter keys={keys} setFilterKey={setFilterKey} setFilterLead={setFilterLead} />
+          <Sort setSortBy={setSortBy} setAscDesc={setAscDesc} />
+          <button onClick={() => setShowSettings(false)} hidden={!isMobile}>Close</button>
+        </div>
 
       </div>
 
@@ -105,6 +161,7 @@ const App = () => {
         <div className="top-div">
           <h1>Search Songs</h1>
           <p>A react app to search through songs using redux and custom api deployed by GitHub.</p>
+          <Search setSearchVal={setSearchVal} showSettings={showSettings} setShowSettings={setShowSettings} isMobile={isMobile} />
         </div>
 
         <div className="bottom-div">
