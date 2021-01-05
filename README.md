@@ -1,6 +1,6 @@
 <h3>Search Songs App</h3>
 
-Tech used: React, HTML, CSS, JavaScript, API, JSON, etc
+Tech used: React, HTML, CSS, JavaScript, JSON, fetch etc.
 
 Created a list of Praise and Worrship songs to search through.
 

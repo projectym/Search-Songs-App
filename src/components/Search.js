@@ -11,9 +11,8 @@ const Search = (props) => {
 
     return (
         <div className="search-component">
-            <h5>Search: </h5>
             <div className='search-bar'>
-                <input className='browser-default' type="text" name='search'
+                <input className='browser-default' type="text" name='search' placeholder="Search"
                     value={search} onChange={(e) => { setSearch(e.target.value) }} />
             </div>
             <button className='clear-search' onClick={() => setSearch('')}>Clear</button>

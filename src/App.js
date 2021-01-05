@@ -157,10 +157,10 @@ const App = () => {
 
       </div>
 
-      <div className="main-div">
+      <div className={isMobile ? "main-div-mobile" : "main-div"}>
         <div className="top-div">
           <h1>Search Songs</h1>
-          <p>A react app to search through songs using redux and custom api deployed by GitHub.</p>
+          <p>A React app made to search through, filter, and sort a list of songs. Deployed with GitHub.</p>
           <Search setSearchVal={setSearchVal} showSettings={showSettings} setShowSettings={setShowSettings} isMobile={isMobile} />
         </div>
 
