@@ -1,39 +1,41 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { appContext } from '../App'
 
 
-const Filter = (props) => {
+const Filter = () => {
 
-    //console.log(props)
+    const { loading, keys, setFilterKey, setFilterLead } = useContext(appContext);
+
     const leaders = ["Keith", "Sis. Jackie", "Sis. Jones", "Tymbree"]
 
     const handleChange = (e) => {
         switch (e.target.id) {
             case "keys":
-                props.setFilterKey(e.target.value);
+                setFilterKey(e.target.value);
                 break;
 
             case "leads":
-                props.setFilterLead(e.target.value);
+                setFilterLead(e.target.value);
                 break;
             default:
         }
 
     }
+
+    const keyResults = loading ? [] : (
+        keys.map((key) => {
+            return (<option value={key} key={key}>{key}</option>)
+        })
+    )
+
+
     return (
         <div>
             <h3 className="center">Filter</h3>
             <label htmlFor="keys">By Key:</label>
             <select className='browser-default' name="keys" id="keys" onChange={handleChange}>
                 <option value=''>All</option>
-                {
-                    props.keys.map((key) => {
-                        return (
-                            <option value={key} key={key}>{key}</option>
-                        )
-                    })
-                }
-
-
+                {keyResults}
             </select>
 
             <label htmlFor="leads">By Leaders:</label>

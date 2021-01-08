@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
 
-// Importing Components
-import Song from './components/Song'
-import Filter from './components/Filter'
-import Sort from './components/Sort'
-import Search from './components/Search'
+//import Custom Hook to fetch Song Data
+import { useFetch } from './hooks/useFetch'
 
+// Importing Components
+import Settings from './components/layout/Settings'
+import TopDiv from './components/layout/TopDiv'
+import BottomDiv from './components/layout/BottomDiv'
+
+export const appContext = React.createContext();
 
 const App = () => {
 
-  const [songs, setSongs] = useState([]);
+  const { loading, songs, keys } = useFetch();
+
   const [songResults, setSongResults] = useState([]);
-  const [keys, setKeys] = useState([]);
 
   const [filterKey, setFilterKey] = useState('');
   const [filterLead, setFilterLead] = useState('');
@@ -27,41 +30,42 @@ const App = () => {
     // Find what to sort by
     // set string to uppercase
     // compare strings and return value
+    if (songResults) {
+      songResults.sort((song1, song2) => {
 
-    songResults.sort((song1, song2) => {
+        let value1 = 1
+        let value2 = -1
 
-      let value1 = 1
-      let value2 = -1
-
-      if (ascDesc === 'desc') {
-        value1 = -1;
-        value2 = 1
-      }
+        if (ascDesc === 'desc') {
+          value1 = -1;
+          value2 = 1
+        }
 
 
-      let var1 = '';
-      let var2 = '';
+        let var1 = '';
+        let var2 = '';
 
-      if (sortSongsBy === 'key') {
-        var1 = song1.key.toUpperCase();
-        var2 = song2.key.toUpperCase();
-      } else if (sortSongsBy === 'date') {
-        var1 = song1.last_date_sung.toUpperCase();
-        var2 = song2.last_date_sung.toUpperCase();
-      } else {
-        var1 = song1.name.toUpperCase();
-        var2 = song2.name.toUpperCase();
-      }
+        if (sortSongsBy === 'key') {
+          var1 = song1.key.toUpperCase();
+          var2 = song2.key.toUpperCase();
+        } else if (sortSongsBy === 'date') {
+          var1 = song1.last_date_sung.toUpperCase();
+          var2 = song2.last_date_sung.toUpperCase();
+        } else {
+          var1 = song1.name.toUpperCase();
+          var2 = song2.name.toUpperCase();
+        }
 
-      if (var1 < var2) {
-        return value2
-      }
-      if (var1 > var2) {
-        return value1
-      }
+        if (var1 < var2) {
+          return value2
+        }
+        if (var1 > var2) {
+          return value1
+        }
 
-      return 0
-    })
+        return 0
+      })
+    }
   }
 
   const checkSize = () => {
@@ -76,65 +80,68 @@ const App = () => {
     }
   }
 
-  useEffect(() => {
-    fetch('https://my-json-server.typicode.com/projectym/Songs-Api/db')
-      .then(response => response.json())
-      .then(json => {
-        setKeys(json.Keys)
-        setSongs(json.Songs);
-        setSongResults(json.Songs);
-      })
-
-  }, []);
 
   useEffect(() => {
-    let filteredSongs = songs.filter((song) => {
-      if (filterKey !== '' && filterLead !== '') {
-        return song.key === filterKey && song.lead.includes(filterLead)
-      }
-      else if (filterKey !== '') {
-        return song.key === filterKey
-      }
-      else if (filterLead !== '') {
-        return song.lead.includes(filterLead)
-      }
-      return true
-    });
-
-    if (searchVal !== '') {
-
-      const searchArr = searchVal.toUpperCase().split(' ');
-      const index = searchArr.indexOf('');
-
-      if (index > -1) {
-        searchArr.splice(index, 1);
-      }
-
-      for (let i = 0; i < searchArr.length; i++) {
-
-        if (filteredSongs.length > 0) {
-          filteredSongs = filteredSongs.filter(song => {
-
-            const { name, lead, key } = song;
-
-            if (name.toUpperCase().includes(searchArr[i])) {
-              return true
-            }
-            else if (lead.toUpperCase().includes(searchArr[i])) {
-              return true
-            }
-            else if (key.toUpperCase().includes(searchArr[i])) {
-              return true
-            }
-            return false;
-          })
-        }
-      }
+    if (!loading) {
+      setSongResults(songs);
     }
 
-    setSongResults(filteredSongs);
+  }, [songs, loading]);
 
-  }, [filterKey, filterLead, songs, searchVal])
+
+  // useEffect for updating songResults.
+  // only woorks if is not loading.
+  useEffect(() => {
+    if (!loading) {
+      let filteredSongs = songs.filter((song) => {
+        if (filterKey !== '' && filterLead !== '') {
+          return song.key === filterKey && song.lead.includes(filterLead)
+        }
+        else if (filterKey !== '') {
+          return song.key === filterKey
+        }
+        else if (filterLead !== '') {
+          return song.lead.includes(filterLead)
+        }
+        return true
+      });
+
+      if (searchVal !== '') {
+
+        const searchArr = searchVal.toUpperCase().split(' ');
+        const index = searchArr.indexOf('');
+
+        if (index > -1) {
+          searchArr.splice(index, 1);
+        }
+
+        for (let i = 0; i < searchArr.length; i++) {
+
+          if (filteredSongs.length > 0) {
+            filteredSongs = filteredSongs.filter(song => {
+
+              const { name, lead, key } = song;
+
+              if (name.toUpperCase().includes(searchArr[i])) {
+                return true
+              }
+              else if (lead.toUpperCase().includes(searchArr[i])) {
+                return true
+              }
+              else if (key.toUpperCase().includes(searchArr[i])) {
+                return true
+              }
+              return false;
+            })
+          }
+        }
+      }
+
+      setSongResults(filteredSongs);
+    }
+  }, [loading, filterKey, filterLead, songs, searchVal])
+
+  //  useEffect for checking size and updating isMobile
 
   useEffect(() => {
     checkSize()
@@ -145,40 +152,22 @@ const App = () => {
   })
 
   return (
+    <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults }} >
 
-    <div className="App">
+      <div className="App">
 
-      <div className={isMobile ? "settings-container-mobile" : "settings-container"} hidden={!showSettings}>
-        <div className="settings-div">
-          <Filter keys={keys} setFilterKey={setFilterKey} setFilterLead={setFilterLead} />
-          <Sort setSortBy={setSortBy} setAscDesc={setAscDesc} />
-          <button onClick={() => setShowSettings(false)} hidden={!isMobile}>Close</button>
+        <Settings />
+
+        <div className={isMobile ? "main-div-mobile" : "main-div"}>
+
+          <TopDiv />
+          <BottomDiv />
+
         </div>
 
       </div>
 
-      <div className={isMobile ? "main-div-mobile" : "main-div"}>
-        <div className="top-div">
-          <h1>Search Songs</h1>
-          <p>A React app made to search through, filter, and sort a list of songs. Deployed with GitHub.</p>
-          <Search setSearchVal={setSearchVal} showSettings={showSettings} setShowSettings={setShowSettings} isMobile={isMobile} />
-        </div>
-
-        <div className="bottom-div">
-          {sortResults('name', ascDesc)}
-          {sortBy === 'name' ? null : sortResults(sortBy, ascDesc)}{
-            songResults.map(song => {
-              return (
-                <Song song={song} key={song.id} />
-              )
-            })}
-        </div>
-      </div>
-
-
-
-
-    </div>
+    </appContext.Provider>
   );
 }
 
