@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Search-Songs-App/static/css/main.1287da27.chunk.css",
-    "main.js": "/Search-Songs-App/static/js/main.b0f74dea.chunk.js",
-    "main.js.map": "/Search-Songs-App/static/js/main.b0f74dea.chunk.js.map",
+    "main.js": "/Search-Songs-App/static/js/main.455e71c1.chunk.js",
+    "main.js.map": "/Search-Songs-App/static/js/main.455e71c1.chunk.js.map",
     "runtime-main.js": "/Search-Songs-App/static/js/runtime-main.46076683.js",
     "runtime-main.js.map": "/Search-Songs-App/static/js/runtime-main.46076683.js.map",
     "static/js/2.fcf79a73.chunk.js": "/Search-Songs-App/static/js/2.fcf79a73.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.46076683.js",
     "static/js/2.fcf79a73.chunk.js",
     "static/css/main.1287da27.chunk.css",
-    "static/js/main.b0f74dea.chunk.js"
+    "static/js/main.455e71c1.chunk.js"
   ]
 }
