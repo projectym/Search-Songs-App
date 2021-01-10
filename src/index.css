@@ -31,7 +31,7 @@ body{
 
 .bottom-div{
     background-color: #ddd;
-    padding: 10px;
+    padding: 5px;
     display: grid;
     grid-template-columns: repeat(auto-fit, min( 400px, 95%));
     grid-column-gap: 10px;
@@ -152,4 +152,10 @@ input, select, select:focus {
  .clear-search:focus {
     outline: none;
     background-color: #fff;
+}
+
+/* -------- Individual Song Card Styles--------- */
+.song-card{
+    text-align: left;
+    padding-left: 10px;
 }

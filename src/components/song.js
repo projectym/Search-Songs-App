@@ -9,11 +9,11 @@ const Song = (props) => {
     //console.log(props);
     const { name, lead, key, url, last_date_sung } = props.song;
     const urlFull = "https://projectym.net/songs/" + url
-    const date = last_date_sung ? new Date(last_date_sung).toDateString().slice(3) : '';
+    const date = last_date_sung ? new Date(last_date_sung + 'T12:00:00Z').toDateString().slice(3) : '';
     return (
-        <div className='card'>
+        <div className='card song-card'>
             <h5>{name}</h5>
-            <p className='center'>Last Sung: {date}</p>
+            <p>Last Sung: {date}</p>
             <p>{lead ? `Lead: ${lead} | ` : ""} Key: {key} |  <a href={urlFull}>Lyrics</a></p>
         </div>
     )
