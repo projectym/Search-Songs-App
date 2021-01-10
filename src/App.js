@@ -83,6 +83,7 @@ const App = () => {
 
   useEffect(() => {
     if (!loading) {
+      // console.log("Songs/Loading")
       setSongResults(songs);
     }
 
