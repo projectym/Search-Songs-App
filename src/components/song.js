@@ -11,7 +11,7 @@ const Song = (props) => {
     const urlFull = "https://projectym.net/songs/" + url
     const date = last_date_sung ? new Date(last_date_sung + 'T12:00:00Z').toDateString().slice(3) : '';
     return (
-        <div className='card song-card'>
+        <div className='song-card'>
             <h5>{name}</h5>
             <p>Last Sung: {date}</p>
             <p>{lead ? `Lead: ${lead} | ` : ""} Key: {key} |  <a href={urlFull}>Lyrics</a></p>

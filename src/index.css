@@ -1,5 +1,5 @@
 body{
-    background-color: #eee;
+    background-color: #fff;
 }
 
 .App{
@@ -30,7 +30,7 @@ body{
 }
 
 .bottom-div{
-    background-color: #ddd;
+    /*background-color: #ddd;*/
     padding: 5px;
     display: grid;
     grid-template-columns: repeat(auto-fit, min( 400px, 95%));
@@ -41,6 +41,8 @@ body{
 /* -------- Settingvtext for inputs so mobile doesn't zoom  -------*/
 input, select, select:focus {
     font-size: 16px;
+    border: 1.5px solid lightgrey;
+    border-radius: 8px;
 }
 
 
@@ -49,7 +51,7 @@ input, select, select:focus {
 
 .settings-container{
     width: 235px;
-    background-color: #d4d4d4;
+    /*background-color: #d4d4d4;*/
     height: 100%;
 
 }
@@ -61,7 +63,7 @@ input, select, select:focus {
     z-index: 8;
     left: 0;
     top: 0;
-    background-color: rgba(82, 82, 82, 0.788);
+    background-color: rgba(200,200,200, 0.788);
     overflow-x: hidden;
     transition: 0.3s;
     align-items: center;
@@ -76,7 +78,7 @@ input, select, select:focus {
 
 .settings-div {
     width: 235px;
-    background-color: #d4d4d4;
+    background-color: #fff;
     padding: 15px;
 }
 
@@ -108,8 +110,10 @@ input, select, select:focus {
     border-bottom: 2px solid black;
 }
 
+
 /* -------- Search Component styles --------- */
 .search-component{
+    position:sticky;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -126,6 +130,7 @@ input, select, select:focus {
     border-radius: 16px;
     align-items: center;
     margin-left: 10px
+
 }
 
 .search-component h5 {
@@ -135,9 +140,7 @@ input, select, select:focus {
     width: 100%;    
     height: 32px;
     border-radius: 16px;
-    border: none;
     padding:17px;
-
  }
 
  .search-bar > input:focus{
@@ -158,4 +161,9 @@ input, select, select:focus {
 .song-card{
     text-align: left;
     padding-left: 10px;
+    border: 1.5px solid lightgrey;
+    border-radius: 8px;
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #fff;
 }
