@@ -5,6 +5,7 @@ import './App.css';
 import { useFetch } from './hooks/useFetch'
 
 // Importing Components
+import Navbar from './components/layout/Navbar'
 import Settings from './components/layout/Settings'
 import TopDiv from './components/layout/TopDiv'
 import BottomDiv from './components/layout/BottomDiv'
@@ -24,6 +25,7 @@ const App = () => {
   const [searchVal, setSearchVal] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   const sortResults = (sortSongsBy, ascDesc) => {
 
@@ -153,17 +155,21 @@ const App = () => {
   })
 
   return (
-    <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults }} >
+    <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults, isDark, setIsDark }} >
 
-      <div className="App">
+      <div className={isDark ? "App-dark" : "App"}>
+        <Navbar />
 
-        <Settings />
+        <div className="app-content">
 
-        <div className={isMobile ? "main-div-mobile" : "main-div"}>
+          <Settings />
 
-          <TopDiv />
-          <BottomDiv />
+          <div className={isMobile ? "main-div-mobile" : "main-div"}>
 
+            <TopDiv />
+            <BottomDiv />
+
+          </div>
         </div>
 
       </div>

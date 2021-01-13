@@ -20,9 +20,9 @@ const BottomDiv = () => {
         <div className="bottom-div">
             {sortResults('name', ascDesc)}
             {sortBy === 'name' ? null : sortResults(sortBy, ascDesc)}
-            {songResults.map(song => {
+            {songResults.length ? (songResults.map(song => {
                 return (<Song song={song} key={song.id} />)
-            })
+            })) : <h3 className='center'>No Results :(</h3>
             }
         </div>
     )

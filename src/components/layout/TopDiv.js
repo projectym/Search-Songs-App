@@ -10,7 +10,7 @@ const TopDiv = () => {
 
     return (
         <div className="top-div">
-            <h1>Search Songs</h1>
+            <h2>Search Songs</h2>
             <p style={{ padding: "0 10px" }} >A React app made to search through, filter, and sort a list of songs. Deployed with GitHub.</p>
             <Search setSearchVal={setSearchVal} showSettings={showSettings} setShowSettings={setShowSettings} isMobile={isMobile} />
         </div>

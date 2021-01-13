@@ -31,14 +31,14 @@ const Filter = () => {
 
     return (
         <div>
-            <h3 className="center">Filter</h3>
-            <label htmlFor="keys">By Key:</label>
+            <h4 className="center">Filter by</h4>
+            <label htmlFor="keys">Key:</label>
             <select className='browser-default' name="keys" id="keys" onChange={handleChange}>
                 <option value=''>All</option>
                 {keyResults}
             </select>
 
-            <label htmlFor="leads">By Leaders:</label>
+            <label htmlFor="leads">Leaders:</label>
             <select className='browser-default' name="leads" id="leads" onChange={handleChange}>
                 <option value=''>All</option>
                 {

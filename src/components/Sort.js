@@ -16,7 +16,7 @@ const Sort = (props) => {
 
     return (
         <div>
-            <h3 className="center">Sort</h3>
+            <h4 className="center">Sort by</h4>
             <div className="flex-row asc-desc">
                 <div className="radio-button width-30">
                     <label htmlFor="title">Asc</label>
@@ -30,17 +30,17 @@ const Sort = (props) => {
             </div>
 
             <div className="radio-button">
-                <label htmlFor="title">By Title</label>
+                <label htmlFor="title">Title</label>
                 <input type="radio" id="title" name="sortBy" value="name" onClick={handleClick} defaultChecked />
             </div>
 
             <div className="radio-button">
-                <label htmlFor="date">By Last Sung</label>
+                <label htmlFor="date">Last Sung</label>
                 <input type="radio" id="date" name="sortBy" value="date" onClick={handleClick} />
             </div>
 
             <div className="radio-button">
-                <label htmlFor="key">By Key</label>
+                <label htmlFor="key">Key</label>
                 <input type="radio" id="key" name="sortBy" value="key" onClick={handleClick} />
             </div>
         </div>
