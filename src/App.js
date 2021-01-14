@@ -26,6 +26,8 @@ const App = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
   const [isDark, setIsDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const sortResults = (sortSongsBy, ascDesc) => {
 
@@ -155,9 +157,9 @@ const App = () => {
   })
 
   return (
-    <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults, isDark, setIsDark }} >
+    <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults, menuOpen, setMenuOpen, isDark, setIsDark }} >
 
-      <div className={isDark ? "App-dark" : "App"}>
+      <div className={isDark ? (menuOpen ? "App-dark fixed" : "App-dark") : (menuOpen ? "App fixed" : "App")}>
         <Navbar />
 
         <div className="app-content">

@@ -1,11 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { appContext } from '../../App'
 
 const Navbar = () => {
-    const { isMobile, isDark, setIsDark } = useContext(appContext);
-
-
-    const [menuOpen, setMenuOpen] = useState(false);
+    const { isMobile, menuOpen, setMenuOpen, isDark, setIsDark } = useContext(appContext);
 
     const hamburgerClick = () => {
         if (!menuOpen) {
@@ -31,9 +28,9 @@ const Navbar = () => {
         return () => {
             setMenuOpen(false);
         }
-    }, [isMobile])
+    }, [isMobile, setMenuOpen])
 
-    const linkNames = ["Code", "Data"];
+    const linkNames = ["GitHub Code", "JSON Data"];
     const links = ["https://github.com/projectym/Search-Songs-App", "https://raw.githubusercontent.com/projectym/Songs-Api/main/db.json"]
 
     if (isMobile) {
@@ -60,10 +57,10 @@ const Navbar = () => {
 
                             <li key="switch">
                                 <div className="switch">
-                                    <label>
+                                    <label>Dark Mode
                                         <input type="checkbox" checked={isDark} onChange={handleChange} />
                                         <span className="lever"></span>
-                                    Dark</label>
+                                    </label>
                                 </div>
                             </li>
 
