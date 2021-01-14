@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Search-Songs-App/static/css/main.62538050.chunk.css",
-    "main.js": "/Search-Songs-App/static/js/main.2af036d9.chunk.js",
-    "main.js.map": "/Search-Songs-App/static/js/main.2af036d9.chunk.js.map",
+    "main.css": "/Search-Songs-App/static/css/main.1cd5c5c6.chunk.css",
+    "main.js": "/Search-Songs-App/static/js/main.31891e8f.chunk.js",
+    "main.js.map": "/Search-Songs-App/static/js/main.31891e8f.chunk.js.map",
     "runtime-main.js": "/Search-Songs-App/static/js/runtime-main.46076683.js",
     "runtime-main.js.map": "/Search-Songs-App/static/js/runtime-main.46076683.js.map",
     "static/js/2.54b360bc.chunk.js": "/Search-Songs-App/static/js/2.54b360bc.chunk.js",
     "static/js/2.54b360bc.chunk.js.map": "/Search-Songs-App/static/js/2.54b360bc.chunk.js.map",
     "index.html": "/Search-Songs-App/index.html",
-    "static/css/main.62538050.chunk.css.map": "/Search-Songs-App/static/css/main.62538050.chunk.css.map",
+    "static/css/main.1cd5c5c6.chunk.css.map": "/Search-Songs-App/static/css/main.1cd5c5c6.chunk.css.map",
     "static/js/2.54b360bc.chunk.js.LICENSE.txt": "/Search-Songs-App/static/js/2.54b360bc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.46076683.js",
     "static/js/2.54b360bc.chunk.js",
-    "static/css/main.62538050.chunk.css",
-    "static/js/main.2af036d9.chunk.js"
+    "static/css/main.1cd5c5c6.chunk.css",
+    "static/js/main.31891e8f.chunk.js"
   ]
 }
