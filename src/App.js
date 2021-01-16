@@ -159,7 +159,7 @@ const App = () => {
   return (
     <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults, menuOpen, setMenuOpen, isDark, setIsDark }} >
 
-      <div className={isDark ? (menuOpen ? "App-dark fixed" : "App-dark") : (menuOpen ? "App fixed" : "App")}>
+      <div className={isDark ? (menuOpen || showSettings ? "App-dark fixed" : "App-dark") : (menuOpen || showSettings ? "App fixed" : "App")}>
         <Navbar />
 
         <div className="app-content">
