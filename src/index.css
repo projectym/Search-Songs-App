@@ -10,11 +10,14 @@ body, #root{
     --focus-color: #eee;
     --border-color: lightgrey;
     --hover-color: rgba(200,200,200,.78);
+    --overlay-color: rgba(200,200,200,.78);
+
     background-color: var(--main-color, #fff);
     color: var(--text-color, #222);
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    width: 100%;
 }
 
 .App-dark{
@@ -24,6 +27,7 @@ body, #root{
     --text-color: #dadada;
     --focus-color: #444;
     --hover-color: rgba(100,100,100,.78);
+    --overlay-color: rgba(50,50,50, 0.788);
 
 
     background-color: var(--main-color, #282828);
@@ -31,6 +35,7 @@ body, #root{
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    width: 100%;
     text-align: center;
 
 }
@@ -124,7 +129,7 @@ input, select, select:focus {
     z-index: 8;
     left: 0;
     top: 0;
-    background-color: rgba(200,200,200, 0.788);
+    background-color: var(--overlay-color);
     overflow-x: hidden;
     transition: 0.3s;
     align-items: center;
