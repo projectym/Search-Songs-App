@@ -2,10 +2,6 @@
 
 This is a React project created to search, sort, and filter through a list of songs.
 
-Tech used: React, HTML, CSS, JavaScript, JSON, fetch etc.
-
-Created a list of Praise and Worrship songs to search through.
-
 The project is deployed with gh-pages here: [Search Songs App](https://projectym.github.io/Search-Songs-App/).
 
 
