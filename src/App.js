@@ -84,6 +84,21 @@ const App = () => {
     }
   }
 
+  const setClass = () => {
+    let className = 'App';
+
+    if (isDark) {
+      className = 'App-dark';
+    }
+
+    if (isMobile) {
+      if (menuOpen || showSettings) {
+        className += ' fixed';
+      }
+    }
+
+    return className
+  }
 
   useEffect(() => {
     if (!loading) {
@@ -159,7 +174,7 @@ const App = () => {
   return (
     <appContext.Provider value={{ loading, isMobile, showSettings, keys, setFilterKey, setFilterLead, setSortBy, setAscDesc, setShowSettings, sortBy, ascDesc, setSearchVal, sortResults, songResults, menuOpen, setMenuOpen, isDark, setIsDark }} >
 
-      <div className={isDark ? (menuOpen || showSettings ? "App-dark fixed" : "App-dark") : (menuOpen || showSettings ? "App fixed" : "App")}>
+      <div className={setClass()}>
         <Navbar />
 
         <div className="app-content">

@@ -275,7 +275,7 @@ input, select, select:focus {
     width: 220px;
     z-index: 214;
     left: -1000px;
-    transition: left 1s cubic-bezier(0.74, 0.01, 0.22, 0.9);
+    transition: left .7s cubic-bezier(0, 0.96, 0.82, 1);
     display:flex;
     flex-direction: row;
 }
